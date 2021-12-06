@@ -39,7 +39,7 @@ namespace Aoc2020.Tests
         [Fact]
         public void Part2()
         {
-            
+            _day.Solve2(_input).Should().Be(230);
         }
     }
 }

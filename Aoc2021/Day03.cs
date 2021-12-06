@@ -40,7 +40,30 @@ namespace Aoc2020
 
         public long Solve2(IList<string> input)
         {
-            throw new NotImplementedException();
+            var oxygenGeneratorItems = input;
+            var co2ScrubberItems = input;
+
+            var rowCount = input.Count;
+            var charCount = input.First().Length;
+            for (var i = 0; i < charCount; i++)
+            {
+                if(oxygenGeneratorItems.Count > 1)
+                {
+                    var sum = oxygenGeneratorItems.Select(x => Convert.ToInt16(x.Substring(i, 1))).Sum(x => x);
+                    var character = sum >= oxygenGeneratorItems.Count / 2.0 ? 1 : 0;
+                    oxygenGeneratorItems = oxygenGeneratorItems.Where(x => x.Substring(i, 1) == character.ToString()).ToList();
+                }
+                if (co2ScrubberItems.Count > 1)
+                {
+                    var sum = co2ScrubberItems.Select(x => Convert.ToInt16(x.Substring(i, 1))).Sum(x => x);
+                    var character = sum >= co2ScrubberItems.Count / 2.0 ? 0 : 1;
+                    co2ScrubberItems = co2ScrubberItems.Where(x => x.Substring(i, 1) == character.ToString()).ToList();
+                }
+            }
+
+            var oxygenGenerator = Convert.ToInt32(oxygenGeneratorItems.First(), 2);
+            var co2Scrubber = Convert.ToInt32(co2ScrubberItems.First(), 2);
+            return oxygenGenerator * co2Scrubber;
         }
     }
 }
