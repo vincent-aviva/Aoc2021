@@ -18,7 +18,8 @@ namespace Aoc2020
 
         public long Solve2(IList<string> input)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return 0;
         }
     }
 
